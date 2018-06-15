@@ -1,2 +1,0 @@
-powershell New-NetQosPolicy -Name "CHANGEME" -AppPathNameMatchCondition TSLGame.exe -ThrottleRateActionBitsPerSecond 8
-powershell New-NetQosPolicy -Name "CHANGEME2" -AppPathNameMatchCondition BeService.exe -ThrottleRateActionBitsPerSecond 8
