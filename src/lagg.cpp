@@ -24,48 +24,50 @@ int main(int argc, const char* argv[])
 	lagswitch lagger;
 
 	// run loop to detect keystrokes
-	console->log("starting to poll for home toggle");
+	console->log("Starting to poll for home toggle.");
 	while(running)
 	{
 		// check if home key is being pressed
-		console->log("polling home key");
+		console->log("Polling home key.");
 		if(GetAsyncKeyState(0x24)) // 0x24 is the home key
 		{
-			console->log("home key is pressed");
+			console->log("Home key is pressed.");
 
 			/* depending on whether its on or off we keep track of it and
 			   check it here and run the appropriate batch script for it */
 			switch(lagger.get_state())
 			{
 			case lag::off: // turn the lag switch on
-				std::cout << "turning lagswitch on" << std::endl;
+				std::cout << "Turning lagswitch on." << std::endl;
 				lagger.on();
+				std::cout << "Done." << std::endl;
 				break;
 
 			case lag::on:  // turn the lag switch off
-				std::cout << "turning lagswitch off" << std::endl;
+				std::cout << "Turning lagswitch off." << std::endl;
 				lagger.off();
+				std::cout << "Done." << std::endl;
 				break;
 			
 			default:       // anything else (edge case)
-				console->log_error("lag_switch was not an expected value");
+				console->log_error("lag_switch was not an expected value.");
 				std::cerr << (int)lagger.get_state() << std::endl;
 				running = false;
 			}
 		}
 
 		// when end key is pressed we cleanly exit
- 		console->log("polling end key");
+ 		console->log("Polling end key.");
 		if(GetAsyncKeyState(0x23)) // 0x23 is the end key
 		{
-			console->log("end key has been pressed.. exiting");
+			console->log("End key has been pressed.. exiting.");
 			running = false;
 		}
 
 		// home & end keys are either not held down or we have a weird edge case
 		else
 		{
-			console->log("home and end key has not pressed.. do nothing");
+			console->log("Home and end key has not pressed.. do nothing.");
 		}
 
 		// sleep so we're not taking 100% cpu
