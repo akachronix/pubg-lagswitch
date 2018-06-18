@@ -74,19 +74,23 @@ bool logger::log(std::string log_str)
 
 bool logger::dump_log(std::string file)
 {
-    std::ofstream log_file;
-    log_file.open(file);
-
-    if(log_file.is_open())
+    if(!log_history.empty())
     {
-        for(auto x : log_history)
-        {
-            log_file << x;
-        }
-        
-        log_file.close();
+        std::ofstream log_file;
+        log_file.open(file);
 
-        return true;
+        if(log_file.is_open())
+        {
+            for(auto x : log_history)
+            {
+                log_file << x;
+            }
+            
+            log_file.close();
+            log_history.clear();
+
+            return true;
+        }
     }
 
     return false;
