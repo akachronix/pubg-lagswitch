@@ -4,3 +4,5 @@ Wrapper around PowerShell commands that throttles PUBG's netcode therefore givin
 ## Usage
 - Press the ```HOME``` key to toggle the lag-switch.
 - Press the ```END``` key to exit the program.
+
+**RUN AS ADMINISTRATOR!**
