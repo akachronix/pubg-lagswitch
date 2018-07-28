@@ -4,19 +4,17 @@ IF NOT EXIST bin\ goto BIN_NOT_EXIST
 IF EXIST bin\ goto BIN_EXIST
 
 :COMPILE
-echo Compiling.
-g++ -Isrc\liblog -Isrc -Lsrc -Lbin -Wall -pedantic -g -s -c src\lagg.cpp src\liblog\liblog.cpp src\lag_switch.cpp
+echo Compiling fortnite_lagswitch.exe.
+g++ -D_FORTNITE -Isrc\liblog -Isrc -Lsrc -Lbin -Wall -pedantic -g -s -o bin\fortnite_lagswitch.exe src\lagg.cpp src\lag_switch.cpp -static
+
+echo Compiling pubg_lagswitch.exe.
+g++ -D_PUBG -Isrc\liblog -Isrc -Lsrc -Lbin -Wall -pedantic -g -s -o bin\pubg_lagswitch.exe src\lagg.cpp src\lag_switch.cpp -static
 
 IF NOT EXIST obj\ goto OBJ_NOT_EXIST
 IF EXIST obj\ goto OBJ_EXIST
 
 :MOVE_OBJECTS
-move /Y *.o obj
-
-echo Linking.
-g++ -Isrc\liblog -Isrc -Lsrc -Lbin -Wall -pedantic -g -s -o bin\pubg_lagswitch.exe obj\lagg.o obj\liblog.o obj\lag_switch.o -static
-
-echo Done.
+rem move /Y *.o obj
 
 pause
 goto DONE
@@ -36,8 +34,8 @@ del /Q /S obj
 goto OBJ_NOT_EXIST
 
 :OBJ_NOT_EXIST
-mkdir obj
+rem mkdir obj
 goto MOVE_OBJECTS
 
 :DONE
-exit
+rem exit
