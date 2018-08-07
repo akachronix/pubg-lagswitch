@@ -25,3 +25,11 @@ public:
 	void On();
 	void Off();
 };
+
+class Fortnite_LagSwitch : public LagSwitch
+{
+	using LagSwitch::LagSwitch;
+
+	void On();
+	void Off();
+};

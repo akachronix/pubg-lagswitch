@@ -6,7 +6,7 @@
 
 #include "LagSwitch.h"
 
-static void Toggle(PUBG_LagSwitch& lagswitch)
+static void Toggle(LagSwitch& lagswitch)
 {
 	bool running = true;
 	while (running)
@@ -42,7 +42,11 @@ int main(int argc, const char* argv[])
 {
 	std::cout << "PUBG Lagswitch" << std::endl;
 	std::cout << "by Chronix" << std::endl;
-	std::cout << "https://www.github.com/akachronix\n" << std::endl;
+	std::cout << "https://www.github.com/akachronix" << std::endl;
+	std::cout << std::endl;
+	std::cout << "Press HOME to toggle." << std::endl;
+	std::cout << "Press END to exit." << std::endl;
+	std::cout << std::endl;
 
 	PUBG_LagSwitch lagger;
 	Toggle(lagger);
